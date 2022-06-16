@@ -1,0 +1,21 @@
+{
+    "name": "hexlet/code",
+    "description": "php-project-lvl2",
+    "type": "project",
+    "license": "mit",
+    "autoload": {
+        "psr-4": {
+            "Hexlet\\Code\\": "src/"
+        },
+        "files": ["bin/gendiff"]
+    },
+    "authors": [
+        {
+            "name": "wiceum"
+        }
+    ],
+    "require": {
+        "docopt/docopt": "^1.0",
+        "ext-json": "*"
+    }
+}
