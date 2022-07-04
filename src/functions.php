@@ -1,4 +1,5 @@
 <?php
+
 use function Functional\zip;
 
 function addSign($elems, $sign): array
@@ -26,13 +27,16 @@ function replaceByLine($elem): string
     }
 }
 
-function stringify($arr): array
+function mapToStr($arr): array
 {
-    return array_map(function ($elem) {
+    $smt = array_map(function ($elem) {
         return "  " . $elem['sign'] .
             " " . (replaceByLine($elem[0][0])) . ": " . (replaceByLine($elem[0][1])) .
             PHP_EOL;
     }, $arr);
+    array_unshift($smt, "{" . PHP_EOL);
+    $smt[] = "}".PHP_EOL;
+    return $smt;
 }
 
 function mySort(&$res)
@@ -58,4 +62,9 @@ function myPrint($str)
         echo $smt;
     }
     echo "}" . PHP_EOL;
+}
+
+function stringify(array $arr)
+{
+  return array_reduce($arr, fn($acc, $elem) => $acc.$elem, '');
 }

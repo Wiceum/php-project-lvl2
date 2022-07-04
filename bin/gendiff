@@ -1,7 +1,7 @@
 #!/usr/bin/env php
 <?php
 include __DIR__ . '/../vendor/autoload.php';
-
+use function Differ\gendiff;
 $doc = <<<DOC
 Generate diff
 
@@ -16,23 +16,5 @@ Options:
   --format <fmt>  Report format [default: stylish]
 DOC;
 $args = Docopt::handle($doc, array('version' => 'genDiff 0.0.1'));
-
-$str1 = file_get_contents($args['<firstFile>']);
-$arr1 = json_decode($str1, true);
-
-$str2 = file_get_contents($args['<secondFile>']);
-$arr2 = json_decode($str2, true);
-
-$same = array_intersect_assoc($arr1, $arr2);
-$diff1 = array_diff_assoc($arr1, $arr2); // add +
-$diff2 = array_diff_assoc($arr2, $arr1); // add -
-
-$diff1 = addSign(repack($diff1), '-');
-$diff2 = addSign(repack($diff2), '+');
-$same = addSign(repack($same), ' ');
-
-$res = array_merge($diff1, $diff2, $same);
-mySort($res);
-
-$str = stringify($res);
-myPrint($str);
+$str = gendiff($args['<firstFile>'], $args['<secondFile>']);
+print_r($str);
