@@ -35,7 +35,7 @@ function mapToStr($arr): array
             PHP_EOL;
     }, $arr);
     array_unshift($smt, "{" . PHP_EOL);
-    $smt[] = "}".PHP_EOL;
+    $smt[] = "}" . PHP_EOL;
     return $smt;
 }
 
@@ -52,19 +52,10 @@ function mySort(&$res)
             }
         }
         return $x < $y ? -1 : 1;
-    });/*dump($res);*/
-}
-
-function myPrint($str)
-{
-    echo "{" . PHP_EOL;
-    foreach ($str as $smt) {
-        echo $smt;
-    }
-    echo "}" . PHP_EOL;
+    });
 }
 
 function stringify(array $arr)
 {
-  return array_reduce($arr, fn($acc, $elem) => $acc.$elem, '');
+    return array_reduce($arr, fn($acc, $elem) => $acc . $elem, '');
 }

@@ -10,6 +10,9 @@
         },
         "files": ["src/functions.php", "src/Differ.php"]
     },
+    "autoload-dev": {
+        "Hexlet\\Code\\tests\\": "tests/"
+    },
     "authors": [
         {
             "name": "wiceum"
@@ -18,10 +21,11 @@
     "require": {
         "docopt/docopt": "^1.0",
         "ext-json": "*",
-        "symfony/var-dumper": "^5.4",
         "lstrojny/functional-php": "^1.17"
     },
     "require-dev": {
-        "squizlabs/php_codesniffer": "3.6.2"
+        "symfony/var-dumper": "^5.4",
+        "squizlabs/php_codesniffer": "3.6.2",
+        "phpunit/phpunit": "^9.5"
     }
 }
